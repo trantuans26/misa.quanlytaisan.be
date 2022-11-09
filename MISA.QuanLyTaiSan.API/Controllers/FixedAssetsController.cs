@@ -105,34 +105,6 @@ namespace MISA.QuanLyTaiSan.API.Controllers
                     TraceId = HttpContext.TraceIdentifier,
                 });
             }
-
-            return StatusCode(StatusCodes.Status200OK, new FixedAsset
-            {
-                FixedAssetId = fixedAssetID,
-                FixedAssetCode = "TS000001",
-                FixedAssetName = "Laptop Lenovo IdeaPad L340",
-                OrganizationId = Guid.NewGuid(),
-                OrganizationCode = "O00000001",
-                OrganizationName = "MISA Corp",
-                DepartmentId = Guid.NewGuid(),
-                DepartmentCode = "P00001",
-                DepartmentName = "Phòng nhân sự",
-                FixedAssetCategoryId = Guid.NewGuid(),
-                FixedAssetCategoryCode = "LTS000001",
-                FixedAssetCategoryName = "Máy tính xách tay",
-                PurchaseDate = DateTime.Now,
-                Cost = 10000,
-                Quantity = 10,
-                DepreciationRate = 1.2f,
-                TrackedYear = DateTime.Now.Year,
-                LifeTime = 1,
-                ProductionYear = DateTime.Now.Year,
-                Active = 0,
-                CreatedBy = "Trần Thái Tuấn",
-                CreatedDate = DateTime.Now,
-                ModifiedBy = "Trần Thái Tuấn",
-                ModifiedDate = DateTime.Now
-            });
         }
 
         /// <summary>
@@ -154,94 +126,7 @@ namespace MISA.QuanLyTaiSan.API.Controllers
             [FromQuery] int offset = 1
             )
         {
-            return StatusCode(StatusCodes.Status200OK, new PagingResult
-            {
-                Data = new List<FixedAsset>
-                {
-                    new FixedAsset
-                {
-                    FixedAssetId = Guid.NewGuid(),
-                    FixedAssetCode = "TS000001",
-                    FixedAssetName = "Laptop Lenovo IdeaPad L340",
-                    OrganizationId = Guid.NewGuid(),
-                    OrganizationCode = "O00000001",
-                    OrganizationName = "MISA Corp",
-                    DepartmentId = Guid.NewGuid(),
-                    DepartmentCode = "P00001",
-                    DepartmentName = "Phòng nhân sự",
-                    FixedAssetCategoryId = Guid.NewGuid(),
-                    FixedAssetCategoryCode = "LTS000001",
-                    FixedAssetCategoryName = "Máy tính xách tay",
-                    PurchaseDate = DateTime.Now,
-                    Cost = 10000,
-                    Quantity = 10,
-                    DepreciationRate = 1.2f,
-                    TrackedYear = DateTime.Now.Year,
-                    LifeTime = 1,
-                    ProductionYear = DateTime.Now.Year,
-                    Active = 0,
-                    CreatedBy = "Trần Thái Tuấn",
-                    CreatedDate = DateTime.Now,
-                    ModifiedBy = "Trần Thái Tuấn",
-                    ModifiedDate = DateTime.Now
-                },
-                    new FixedAsset
-                {
-                    FixedAssetId = Guid.NewGuid(),
-                    FixedAssetCode = "TS000002",
-                    FixedAssetName = "Laptop Lenovo ThinkPad X1 Carbon",
-                    OrganizationId = Guid.NewGuid(),
-                    OrganizationCode = "O00000001",
-                    OrganizationName = "MISA Corp",
-                    DepartmentId = Guid.NewGuid(),
-                    DepartmentCode = "P00002",
-                    DepartmentName = "Phòng hành chính",
-                    FixedAssetCategoryId = Guid.NewGuid(),
-                    FixedAssetCategoryCode = "LTS000001",
-                    FixedAssetCategoryName = "Máy tính xách tay",
-                    PurchaseDate = DateTime.Now,
-                    Cost = 10000,
-                    Quantity = 10,
-                    DepreciationRate = 1.2f,
-                    TrackedYear = DateTime.Now.Year,
-                    LifeTime = 1,
-                    ProductionYear = DateTime.Now.Year,
-                    Active = 0,
-                    CreatedBy = "Trần Thái Tuấn",
-                    CreatedDate = DateTime.Now,
-                    ModifiedBy = "Trần Thái Tuấn",
-                    ModifiedDate = DateTime.Now
-                },
-                    new FixedAsset
-                {
-                    FixedAssetId = Guid.NewGuid(),
-                    FixedAssetCode = "TS000003",
-                    FixedAssetName = "Laptop Lenovo Legion 5",
-                    OrganizationId = Guid.NewGuid(),
-                    OrganizationCode = "O00000001",
-                    OrganizationName = "MISA Corp",
-                    DepartmentId = Guid.NewGuid(),
-                    DepartmentCode = "P00003",
-                    DepartmentName = "Phòng kế toán",
-                    FixedAssetCategoryId = Guid.NewGuid(),
-                    FixedAssetCategoryCode = "LTS000001",
-                    FixedAssetCategoryName = "Máy tính xách tay",
-                    PurchaseDate = DateTime.Now,
-                    Cost = 10000,
-                    Quantity = 10,
-                    DepreciationRate = 1.2f,
-                    TrackedYear = DateTime.Now.Year,
-                    LifeTime = 1,
-                    ProductionYear = DateTime.Now.Year,
-                    Active = 0,
-                    CreatedBy = "Trần Thái Tuấn",
-                    CreatedDate = DateTime.Now,
-                    ModifiedBy = "Trần Thái Tuấn",
-                    ModifiedDate = DateTime.Now
-                }
-                },
-                TotalCount = 3
-            });
+            return StatusCode(StatusCodes.Status200OK);
         }
         #endregion
 
