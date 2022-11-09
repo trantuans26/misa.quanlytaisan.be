@@ -10,57 +10,57 @@ namespace MISA.QuanLyTaiSan.API.Entities
         /// <summary>
         /// ID Phòng ban
         /// </summary>
-        public Guid DepartmentID { get; set; }
+        public Guid department_id { get; set; }
 
         /// <summary>
         /// Mã phòng ban
         /// </summary>
-        public string DepartmentCode { get; set; }
+        public string department_code { get; set; }
 
         /// <summary>
         /// Tên phòng ban
         /// </summary>
-        public string DepratmentName { get; set; }
+        public string department_name { get; set; }
 
         /// <summary>
         /// Mô tả
         /// </summary>
-        public string Description { get; set; }
+        public string description { get; set; }
 
         /// <summary>
         /// Có phải là cha không
         /// </summary>
-        public IsParent IsParent { get; set; }
+        public int is_parent { get; set; }
 
         /// <summary>
         /// Id phòng ban cha
         /// </summary>
-        public Guid ParentID { get; set; }
+        public Guid parent_id { get; set; }
 
         /// <summary>
         /// ID đơn vị
         /// </summary>
-        public Guid OrganizationID { get; set; }
+        public Guid organization_id { get; set; }
 
         /// <summary>
         /// Người tạo
         /// </summary>
-        public string CreateBy { get; set; }
+        public string created_by { get; set; }
 
         /// <summary>
         /// Ngày tạo
         /// </summary>
-        public DateTime CreateDate { get; set; }
+        public DateTime created_date { get; set; }
 
         /// <summary>
         /// Người sửa
         /// </summary>
-        public string ModifiedBy { get; set; }
+        public string modified_by { get; set; }
 
         /// <summary>
         /// Ngày sửa
         /// </summary>
-        public DateTime ModifiedDate { get; set; }
+        public DateTime modified_date { get; set; }
 
 
     }

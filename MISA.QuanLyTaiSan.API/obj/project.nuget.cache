@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "GnDktNdb9grsfM/VN2UEKOjRRllWpBP06e4lstPtwzCxBS9rzZ6td2olQeCghiVnzebJnlH+sZToXbSIQoI2oQ==",
+  "dgSpecHash": "nnRbeDWz2akya08gSt5WsP+TIETmkXECTG0WmZUFHCdPDpFD4UFLLW6Lqgg0O6O4QVHbm59UGc6vbNGcMJNkpA==",
   "success": true,
-  "projectFilePath": "D:\\Fresher Web Course MISA\\Web API\\MISA.QuanLyTaiSan\\MISA.QuanLyTaiSan.API\\MISA.QuanLyTaiSan.API.csproj",
+  "projectFilePath": "D:\\Fresher Web Course MISA\\misa.quanlytaisan.be\\MISA.QuanLyTaiSan.API\\MISA.QuanLyTaiSan.API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\trant\\.nuget\\packages\\dapper\\2.0.123\\dapper.2.0.123.nupkg.sha512",
     "C:\\Users\\trant\\.nuget\\packages\\microsoft.extensions.apidescription.server\\3.0.0\\microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",

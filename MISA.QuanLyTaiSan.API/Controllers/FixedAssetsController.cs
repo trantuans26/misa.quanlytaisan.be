@@ -75,19 +75,20 @@ namespace MISA.QuanLyTaiSan.API.Controllers
 
                 // Chuẩn bị câu lệnh SQL
                 string storeProcedureName = "Proc_GetFixedAssetById";
-                string sqlCommand = "SELECT * FROM fixed_asset";
 
                 // Chuẩn bị tham số đầu vào
+                var parameters = new DynamicParameters();
+                parameters.Add("$FixedAssetId", fixedAssetID);
 
                 // Thực hiện gọi vào DB
-                var fixedAssets = mySqlConnection.Query(sqlCommand);
+                var fixedAsset = mySqlConnection.QueryFirstOrDefault<FixedAsset>(storeProcedureName, parameters, commandType: System.Data.CommandType.StoredProcedure);
 
                 // Xử lý kết quả trả về
-                if (fixedAssets != null)
+                if (fixedAsset != null)
                 {
-                    return StatusCode(StatusCodes.Status200OK, fixedAssets);
+                    return StatusCode(StatusCodes.Status200OK, fixedAsset);
                 }
-                return StatusCode(StatusCodes.Status200OK, new List<FixedAsset>());
+                return StatusCode(StatusCodes.Status404NotFound);
 
 
                 // Try catch Exepction

@@ -5,123 +5,122 @@
         /// <summary>
         /// ID tài sản
         /// </summary>
-        public Guid FixedAssetId { get; set; }
+        public Guid fixed_asset_id { get; set; }
 
         /// <summary>
         /// Mã tài sản
         /// </summary>
-        public string? FixedAssetCode { get; set; }
+        public string? fixed_asset_code { get; set; }
 
         /// <summary>
         /// Tên tài sản
         /// </summary>
-        public string? FixedAssetName { get; set; }
+        public string? fixed_asset_name { get; set; }
 
         /// <summary>
         /// ID đơn vị
         /// </summary>
-        public Guid OrganizationId { get; set; }
+        public Guid organization_id { get; set; }
 
         /// <summary>
         /// Mã đơn vị
         /// </summary>
-        public string? OrganizationCode { get; set; }
+        public string? organization_code { get; set; }
 
         /// <summary>
         /// Tên đơn vị
         /// </summary>
-        public string? OrganizationName { get; set; }
+        public string? organization_name { get; set; }
 
         /// <summary>
         /// ID loại tài sản
         /// </summary>
-        public Guid DepartmentId { get; set; }
+        public Guid department_id { get; set; }
 
         /// <summary>
         /// Mã loại tài sản
         /// </summary>
-        public string? DepartmentCode { get; set; }
+        public string? department_code { get; set; }
 
         /// <summary>
         /// Tên loại tài sản
         /// </summary>
-        public string? DepartmentName { get; set; }
+        public string? department_name { get; set; }
 
         /// <summary>
         /// ID phòng ban
         /// </summary>
-        public Guid FixedAssetCategoryId { get; set; }
+        public Guid fixed_asset_category_id { get; set; }
 
         /// <summary>
         /// Mã phòng ban
         /// </summary>
-        public string? FixedAssetCategoryCode { get; set; }
+        public string? fixed_asset_category_code { get; set; }
 
         /// <summary>
         /// Tên phòng ban
         /// </summary>
-        public string? FixedAssetCategoryName { get; set; }
+        public string? fixed_asset_category_name { get; set; }
 
         /// <summary>
         /// Ngày mua
         /// </summary>
-        public DateTime? PurchaseDate { get; set; }
+        public DateTime? purchase_date { get; set; }
 
         /// <summary>
         /// Nguyên giá
         /// </summary>
-        public float? Cost { get; set; }
+        public float? cost { get; set; }
 
         /// <summary>
         /// Số lượng
         /// </summary>
-        public int? Quantity { get; set; }
+        public int? quantity { get; set; }
 
         /// <summary>
         /// Tỷ lệ hao mòn
         /// </summary>
-        public float? DepreciationRate { get; set; }
+        public float? depreciation_rate { get; set; }
 
         /// <summary>
         /// Năm bắt đầu theo dõi tài sản trên phần mềm
         /// </summary>
-        public int? TrackedYear { get; set; }
-
+        public int? tracked_year { get; set; }
 
         /// <summary>
         /// Số năm sử dụng
         /// </summary>
-        public int? LifeTime { get; set; }
+        public int? life_time { get; set; }
 
         /// <summary>
         /// Năm sử dụng
         /// </summary>
-        public int? ProductionYear { get; set; }
+        public int? production_year { get; set; }
 
         /// <summary>
         /// Sử dụng
         /// </summary>
-        public int? Active { get; set; }
+        public int? active { get; set; }
 
         /// <summary>
         /// Người tạo
         /// </summary>
-        public string? CreatedBy { get; set; }
+        public string? created_by { get; set; }
 
         /// <summary>
         /// Ngày tạo
         /// </summary>
-        public DateTime? CreatedDate { get; set; }
+        public DateTime? created_date { get; set; }
 
         /// <summary>
         /// Người sửa 
         /// </summary>
-        public string? ModifiedBy { get; set; }
+        public string? modified_by { get; set; }
 
         /// <summary>
         /// Ngày sửa 
         /// </summary>
-        public DateTime? ModifiedDate { get; set; }
+        public DateTime? modified_date { get; set; }
 
     }
 }
