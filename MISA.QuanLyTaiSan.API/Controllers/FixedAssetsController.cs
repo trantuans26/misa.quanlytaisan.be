@@ -1,8 +1,8 @@
 ﻿using Dapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using MISA.QuanLyTaiSan.API.Entities;
-using MISA.QuanLyTaiSan.API.Entities.DTO;
+using MISA.QuanLyTaiSan.BL;
+using MISA.QuanLyTaiSan.Common.Entities;
 using MySqlConnector;
 
 namespace MISA.QuanLyTaiSan.API.Controllers
@@ -11,6 +11,23 @@ namespace MISA.QuanLyTaiSan.API.Controllers
     [ApiController]
     public class FixedAssetsController : ControllerBase // extends, implements
     {
+        #region Field
+
+        private IFixedAssetBL _fixedAssetBL;
+
+        #endregion
+
+        #region Constructor
+
+        public FixedAssetsController(IFixedAssetBL fixedAssetBL)
+        {
+            _fixedAssetBL = fixedAssetBL;
+        }
+
+        #endregion
+
+        #region Method
+
         #region API GET
         /// <summary>
         /// API lấy danh sách tất cả tài sản
@@ -21,18 +38,8 @@ namespace MISA.QuanLyTaiSan.API.Controllers
         public IActionResult GetAllFixedAssets()
         {
             try
-            {  
-                // Khởi tạo kết nối tới DB MySQL
-                var connectionString = "Server=localhost;Port=3306;Database=qlts_fresher_core;Uid=root;Pwd=12345678;";
-                var mySqlConnection = new MySqlConnection(connectionString);
-
-                // Chuẩn bị câu lệnh SQL
-                string storeProcedureName = "Proc_GetAllFixedAssets";
-
-                // Chuẩn bị tham số đầu vào
-
-                // Thực hiện gọi vào DB
-                var fixedAssets = mySqlConnection.Query(storeProcedureName, commandType: System.Data.CommandType.StoredProcedure);
+            {
+                var fixedAssets = _fixedAssetBL.GetAllFixedAssets();
 
                 // Xử lý kết quả trả về
                 if (fixedAssets != null)
@@ -66,19 +73,7 @@ namespace MISA.QuanLyTaiSan.API.Controllers
         {
             try
             {
-                // Khởi tạo kết nối tới DB MySQL
-                var connectionString = "Server=localhost;Port=3306;Database=qlts_fresher_core;Uid=root;Pwd=12345678;";
-                var mySqlConnection = new MySqlConnection(connectionString);
-
-                // Chuẩn bị câu lệnh SQL
-                string storeProcedureName = "Proc_GetFixedAssetById";
-
-                // Chuẩn bị tham số đầu vào
-                var parameters = new DynamicParameters();
-                parameters.Add("$FixedAssetId", fixedAssetID);
-
-                // Thực hiện gọi vào DB
-                var fixedAsset = mySqlConnection.QueryFirstOrDefault<FixedAsset>(storeProcedureName, parameters, commandType: System.Data.CommandType.StoredProcedure);
+                var fixedAsset = _fixedAssetBL.GetFixedAssetByID(fixedAssetID);
 
                 // Xử lý kết quả trả về
                 if (fixedAsset != null)
@@ -107,38 +102,22 @@ namespace MISA.QuanLyTaiSan.API.Controllers
         /// <param name="keyword">Từ khoá muốn tìm kiếm</param>
         /// <param name="fixedAssetCategoryID">ID loại tài sản</param>
         /// <param name="departmentID">ID bộ phận sử dụng</param>
-        /// <param name="limit"> Số bản ghi muốn lấy</param>
-        /// <param name="offset"> Vị trí bắt đầu lấy</param>
+        /// <param name="pageSize"> Số bản ghi muốn lấy</param>
+        /// <param name="pageIndex"> Vị trí dấu trang</param>
         /// <returns>Danh sách nhân viên và tổng số bản ghi</returns>
         /// Created by: TTTuan (7/11/2022)
         [HttpGet("filter")]
         public IActionResult GetFixedAssetsFilter(
             [FromQuery] string? keyword,
-            [FromQuery] Guid? fixedAssetCategoryId,
-            [FromQuery] Guid? departmentId,
-            [FromQuery] int limit = 20,
-            [FromQuery] int offset = 1
+            [FromQuery] Guid? fixedAssetCategoryID,
+            [FromQuery] Guid? departmentID,
+            [FromQuery] int pageSize = 20,
+            [FromQuery] int pageIndex = 1
             )
         {
             try
             {
-                // Khởi tạo kết nối tới DB MySQL
-                var connectionString = "Server=localhost;Port=3306;Database=qlts_fresher_core;Uid=root;Pwd=12345678;";
-                var mySqlConnection = new MySqlConnection(connectionString);
-
-                // Chuẩn bị câu lệnh SQL
-                string storeProcedureName = "Proc_GetFixedAssetsFilter";
-
-                // Chuẩn bị tham số đầu vào
-                var parameters = new DynamicParameters();
-                parameters.Add("$Keyword", keyword);
-                parameters.Add("$DepartmentId", departmentId);
-                parameters.Add("$fixedAssetCategoryId", fixedAssetCategoryId);               
-                parameters.Add("$PageSize", limit);
-                parameters.Add("$PageIndex", offset);
-
-                // Thực hiện gọi vào DB
-                var fixedAssets = mySqlConnection.Query(storeProcedureName, parameters, commandType: System.Data.CommandType.StoredProcedure);
+                var fixedAssets = _fixedAssetBL.GetFixedAssetsFilter(keyword, fixedAssetCategoryID, departmentID, pageSize, pageIndex);
 
                 // Xử lý kết quả trả về
                 if (fixedAssets != null)
@@ -387,5 +366,7 @@ namespace MISA.QuanLyTaiSan.API.Controllers
             return StatusCode(StatusCodes.Status200OK);
         }
         #endregion
+
+        #endregion 
     }
 }

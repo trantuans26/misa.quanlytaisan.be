@@ -114,6 +114,45 @@
         "frameworkReferences": [
           "Microsoft.AspNetCore.App"
         ]
+      },
+      "MISA.QuanLyTaiSan.BL/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "MISA.QuanLyTaiSan.Common": "1.0.0",
+          "MISA.QuanLyTaiSan.DL": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/MISA.QuanLyTaiSan.BL.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/MISA.QuanLyTaiSan.BL.dll": {}
+        }
+      },
+      "MISA.QuanLyTaiSan.Common/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "compile": {
+          "bin/placeholder/MISA.QuanLyTaiSan.Common.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/MISA.QuanLyTaiSan.Common.dll": {}
+        }
+      },
+      "MISA.QuanLyTaiSan.DL/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "Dapper": "2.0.123",
+          "MISA.QuanLyTaiSan.Common": "1.0.0",
+          "MySqlConnector": "2.2.0"
+        },
+        "compile": {
+          "bin/placeholder/MISA.QuanLyTaiSan.DL.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/MISA.QuanLyTaiSan.DL.dll": {}
+        }
       }
     }
   },
@@ -287,11 +326,28 @@
         "swashbuckle.aspnetcore.swaggerui.6.2.3.nupkg.sha512",
         "swashbuckle.aspnetcore.swaggerui.nuspec"
       ]
+    },
+    "MISA.QuanLyTaiSan.BL/1.0.0": {
+      "type": "project",
+      "path": "../MISA.QuanLyTaiSan.BL/MISA.QuanLyTaiSan.BL.csproj",
+      "msbuildProject": "../MISA.QuanLyTaiSan.BL/MISA.QuanLyTaiSan.BL.csproj"
+    },
+    "MISA.QuanLyTaiSan.Common/1.0.0": {
+      "type": "project",
+      "path": "../MISA.QuanLyTaiSan.Common/MISA.QuanLyTaiSan.Common.csproj",
+      "msbuildProject": "../MISA.QuanLyTaiSan.Common/MISA.QuanLyTaiSan.Common.csproj"
+    },
+    "MISA.QuanLyTaiSan.DL/1.0.0": {
+      "type": "project",
+      "path": "../MISA.QuanLyTaiSan.DL/MISA.QuanLyTaiSan.DL.csproj",
+      "msbuildProject": "../MISA.QuanLyTaiSan.DL/MISA.QuanLyTaiSan.DL.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net6.0": [
       "Dapper >= 2.0.123",
+      "MISA.QuanLyTaiSan.BL >= 1.0.0",
+      "MISA.QuanLyTaiSan.Common >= 1.0.0",
       "MySqlConnector >= 2.2.0",
       "Swashbuckle.AspNetCore >= 6.2.3"
     ]
@@ -328,7 +384,14 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "D:\\Fresher Web Course MISA\\misa.quanlytaisan.be\\MISA.QuanLyTaiSan.BL\\MISA.QuanLyTaiSan.BL.csproj": {
+              "projectPath": "D:\\Fresher Web Course MISA\\misa.quanlytaisan.be\\MISA.QuanLyTaiSan.BL\\MISA.QuanLyTaiSan.BL.csproj"
+            },
+            "D:\\Fresher Web Course MISA\\misa.quanlytaisan.be\\MISA.QuanLyTaiSan.Common\\MISA.QuanLyTaiSan.Common.csproj": {
+              "projectPath": "D:\\Fresher Web Course MISA\\misa.quanlytaisan.be\\MISA.QuanLyTaiSan.Common\\MISA.QuanLyTaiSan.Common.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

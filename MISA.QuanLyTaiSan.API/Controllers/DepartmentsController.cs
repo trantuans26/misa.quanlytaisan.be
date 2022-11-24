@@ -1,38 +1,59 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Dapper;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using MISA.QuanLyTaiSan.API.Entities;
+using MISA.QuanLyTaiSan.Common.Entities;
+using MySqlConnector;
 
 namespace MISA.QuanLyTaiSan.API.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/v1/[controller]")]
     [ApiController]
     public class DepartmentsController : ControllerBase
     {
+        #region API GET
         /// <summary>
-        /// API thêm mới một phòng ban 
+        /// API lấy danh sách tất cả bộ phận sử dụng
         /// </summary>
-        /// <param name="department">Đối tượng phòng ban cần thêm mới</param>
-        /// <returns>ID của phòng ban vừa thêm mới</returns>
+        /// <returns>Danh sách tất cả bộ phận sử dụng</returns>
         /// Created by: TTTuan (7/11/2022)
-        [HttpPost]
-        public IActionResult InsertDepartment([FromBody] Department department) 
+        [HttpGet] // attribute get data
+        public IActionResult GetAllDepartments()
         {
-            return StatusCode(StatusCodes.Status201Created, Guid.NewGuid());
-        }
- 
-        /// <summary>
-        /// API sửa thông tin phòng ban theo ID
-        /// </summary>
-        /// <param name="departmentID">ID phòng ban muốn sửa</param>
-        /// <param name="department">Đối tượng phòng ban muốn sửa</param>
-        /// <returns>ID của phòng ban vừa sửa</returns>
-        /// Created by: TTTuan (7/11/2022)
-        [HttpPut("{departmentID}")]
-        public IActionResult UpdateDepartment([FromRoute] Guid departmentID, [FromBody] Department department)
-        {
-            return StatusCode(StatusCodes.Status200OK, departmentID);
-        }
+            try
+            {
+                // Khởi tạo kết nối tới DB MySQL
+                var connectionString = "Server=localhost;Port=3306;Database=qlts_fresher_core;Uid=root;Pwd=12345678;";
+                var mySqlConnection = new MySqlConnection(connectionString);
 
+                // Chuẩn bị câu lệnh SQ
+                string storeProcedureName = "Proc_GetAllDepartments";
+
+                // Chuẩn bị tham số đầu vào
+
+                // Thực hiện gọi vào DB
+                var departments = mySqlConnection.Query(storeProcedureName, commandType: System.Data.CommandType.StoredProcedure);
+
+                // Xử lý kết quả trả về
+                if (departments != null)
+                {
+                    return StatusCode(StatusCodes.Status200OK, departments);
+                }
+                return StatusCode(StatusCodes.Status200OK, new List<FixedAsset>());
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return StatusCode(StatusCodes.Status500InternalServerError, new
+                {
+                    ErrorCode = 1,
+                    DevMsg = "Catched an exception",
+                    UseMsg = "Có lỗi xảy ra! Vui lòng liên hệ với MISA",
+                    MoreInfor = "https://openapi.misa.com.vn/errorcode/1",
+                    TraceId = HttpContext.TraceIdentifier,
+                });
+            }
+        }
+        #endregion API GET
 
     }
 }

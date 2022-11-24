@@ -3,7 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32901.215
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MISA.QuanLyTaiSan.API", "MISA.QuanLyTaiSan.API\MISA.QuanLyTaiSan.API.csproj", "{2E600148-813A-4F18-8F9F-78CE881B510A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MISA.QuanLyTaiSan.API", "MISA.QuanLyTaiSan.API\MISA.QuanLyTaiSan.API.csproj", "{2E600148-813A-4F18-8F9F-78CE881B510A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MISA.QuanLyTaiSan.Common", "MISA.QuanLyTaiSan.Common\MISA.QuanLyTaiSan.Common.csproj", "{FBB508E1-57F7-4AC8-87CB-02AFEB5F28F1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MISA.QuanLyTaiSan.DL", "MISA.QuanLyTaiSan.DL\MISA.QuanLyTaiSan.DL.csproj", "{3BFD3081-06CA-4B7B-B48C-C1745E034C78}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MISA.QuanLyTaiSan.BL", "MISA.QuanLyTaiSan.BL\MISA.QuanLyTaiSan.BL.csproj", "{0D85189F-1EB9-4854-829B-6A2ED101DF0B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +21,18 @@ Global
 		{2E600148-813A-4F18-8F9F-78CE881B510A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2E600148-813A-4F18-8F9F-78CE881B510A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2E600148-813A-4F18-8F9F-78CE881B510A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FBB508E1-57F7-4AC8-87CB-02AFEB5F28F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FBB508E1-57F7-4AC8-87CB-02AFEB5F28F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FBB508E1-57F7-4AC8-87CB-02AFEB5F28F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FBB508E1-57F7-4AC8-87CB-02AFEB5F28F1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3BFD3081-06CA-4B7B-B48C-C1745E034C78}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3BFD3081-06CA-4B7B-B48C-C1745E034C78}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3BFD3081-06CA-4B7B-B48C-C1745E034C78}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3BFD3081-06CA-4B7B-B48C-C1745E034C78}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0D85189F-1EB9-4854-829B-6A2ED101DF0B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0D85189F-1EB9-4854-829B-6A2ED101DF0B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0D85189F-1EB9-4854-829B-6A2ED101DF0B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0D85189F-1EB9-4854-829B-6A2ED101DF0B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

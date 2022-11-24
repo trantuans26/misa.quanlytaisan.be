@@ -12,4 +12,9 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\MISA.QuanLyTaiSan.BL\MISA.QuanLyTaiSan.BL.csproj" />
+    <ProjectReference Include="..\MISA.QuanLyTaiSan.Common\MISA.QuanLyTaiSan.Common.csproj" />
+  </ItemGroup>
+
 </Project>
