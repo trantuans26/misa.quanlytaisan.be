@@ -7,7 +7,7 @@ using MISA.QuanLyTaiSan.Common.Entities;
 
 namespace MISA.QuanLyTaiSan.DL
 {
-    public interface IFixedAssetDL
+    public interface IFixedAssetDL : IBaseDL<FixedAsset>
     {
         /// <summary>
         /// Lấy danh sách tất cả tài sản
@@ -15,7 +15,7 @@ namespace MISA.QuanLyTaiSan.DL
         /// <returns>Danh sách tất cả tài sản</returns>
         /// Created by: Tuan
         /// Date: 10/11/2022
-        public IEnumerable<dynamic> GetAllFixedAssets();
+        //public IEnumerable<dynamic> GetAllFixedAssets();
 
         /// <summary>
         /// Lấy thông tin 1 tài sản theo ID

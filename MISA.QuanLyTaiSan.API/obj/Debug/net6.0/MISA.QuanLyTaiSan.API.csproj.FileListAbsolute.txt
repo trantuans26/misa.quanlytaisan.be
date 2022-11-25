@@ -97,3 +97,9 @@ D:\Fresher Web Course MISA\misa.quanlytaisan.be-main2\MISA.QuanLyTaiSan.API\bin\
 D:\Fresher Web Course MISA\misa.quanlytaisan.be-main2\MISA.QuanLyTaiSan.API\bin\Debug\net6.0\MISA.QuanLyTaiSan.DL.dll
 D:\Fresher Web Course MISA\misa.quanlytaisan.be-main2\MISA.QuanLyTaiSan.API\bin\Debug\net6.0\MISA.QuanLyTaiSan.BL.pdb
 D:\Fresher Web Course MISA\misa.quanlytaisan.be-main2\MISA.QuanLyTaiSan.API\bin\Debug\net6.0\MISA.QuanLyTaiSan.DL.pdb
+D:\Fresher Web Course MISA\misa.quanlytaisan.be\MISA.QuanLyTaiSan.API\bin\Debug\net6.0\MISA.QuanLyTaiSan.BL.dll
+D:\Fresher Web Course MISA\misa.quanlytaisan.be\MISA.QuanLyTaiSan.API\bin\Debug\net6.0\MISA.QuanLyTaiSan.Common.dll
+D:\Fresher Web Course MISA\misa.quanlytaisan.be\MISA.QuanLyTaiSan.API\bin\Debug\net6.0\MISA.QuanLyTaiSan.DL.dll
+D:\Fresher Web Course MISA\misa.quanlytaisan.be\MISA.QuanLyTaiSan.API\bin\Debug\net6.0\MISA.QuanLyTaiSan.BL.pdb
+D:\Fresher Web Course MISA\misa.quanlytaisan.be\MISA.QuanLyTaiSan.API\bin\Debug\net6.0\MISA.QuanLyTaiSan.Common.pdb
+D:\Fresher Web Course MISA\misa.quanlytaisan.be\MISA.QuanLyTaiSan.API\bin\Debug\net6.0\MISA.QuanLyTaiSan.DL.pdb

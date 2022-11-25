@@ -1,5 +1,7 @@
 ﻿using MISA.QuanLyTaiSan.BL;
+using MISA.QuanLyTaiSan.BL.BaseBL;
 using MISA.QuanLyTaiSan.DL;
+using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,6 +10,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 
 //Dependency injection
+builder.Services.AddScoped(typeof(IBaseDL<>), typeof(BaseDL<>));
+builder.Services.AddScoped(typeof(IBaseBL<>), typeof(BaseBL<>));
 builder.Services.AddScoped<IFixedAssetBL, FixedAssetBL>();
 builder.Services.AddScoped<IFixedAssetDL, FixedAssetDL>();
 

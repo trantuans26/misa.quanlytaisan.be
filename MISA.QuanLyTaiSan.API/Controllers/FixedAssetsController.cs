@@ -9,7 +9,7 @@ namespace MISA.QuanLyTaiSan.API.Controllers
 {
     [Route("api/v1/[controller]")] //Attribute
     [ApiController]
-    public class FixedAssetsController : ControllerBase // extends, implements
+    public class FixedAssetsController : BasesController<FixedAsset> // extends, implements
     {
         #region Field
 
@@ -19,7 +19,7 @@ namespace MISA.QuanLyTaiSan.API.Controllers
 
         #region Constructor
 
-        public FixedAssetsController(IFixedAssetBL fixedAssetBL)
+        public FixedAssetsController(IFixedAssetBL fixedAssetBL) : base(fixedAssetBL)
         {
             _fixedAssetBL = fixedAssetBL;
         }
@@ -34,33 +34,33 @@ namespace MISA.QuanLyTaiSan.API.Controllers
         /// </summary>
         /// <returns>Danh sách tất cả tài sản</returns>
         /// Created by: TTTuan (7/11/2022)
-        [HttpGet] // attribute get data
-        public IActionResult GetAllFixedAssets()
-        {
-            try
-            {
-                var fixedAssets = _fixedAssetBL.GetAllFixedAssets();
+        //[HttpGet] // attribute get data
+        //public IActionResult GetAllFixedAssets()
+        //{
+        //    try
+        //    {
+        //        var fixedAssets = _fixedAssetBL.GetAllFixedAssets();
 
-                // Xử lý kết quả trả về
-                if (fixedAssets != null)
-                {
-                    return StatusCode(StatusCodes.Status200OK, fixedAssets);
-                }
-                return StatusCode(StatusCodes.Status200OK, new List<FixedAsset>());
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-                return StatusCode(StatusCodes.Status500InternalServerError, new
-                {
-                    ErrorCode = 1,
-                    DevMsg = "Catched an exception",
-                    UseMsg = "Có lỗi xảy ra! Vui lòng liên hệ với MISA",
-                    MoreInfor = "https://openapi.misa.com.vn/errorcode/1",
-                    TraceId = HttpContext.TraceIdentifier,
-                });
-            }
-        }
+        //        // Xử lý kết quả trả về
+        //        if (fixedAssets != null)
+        //        {
+        //            return StatusCode(StatusCodes.Status200OK, fixedAssets);
+        //        }
+        //        return StatusCode(StatusCodes.Status200OK, new List<FixedAsset>());
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        Console.WriteLine(ex.Message);
+        //        return StatusCode(StatusCodes.Status500InternalServerError, new
+        //        {
+        //            ErrorCode = 1,
+        //            DevMsg = "Catched an exception",
+        //            UseMsg = "Có lỗi xảy ra! Vui lòng liên hệ với MISA",
+        //            MoreInfor = "",
+        //            TraceId = HttpContext.TraceIdentifier,
+        //        });
+        //    }
+        //}
 
         /// <summary>
         /// API lấy một tài sản theo ID

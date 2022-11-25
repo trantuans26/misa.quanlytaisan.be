@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MISA.QuanLyTaiSan.BL.BaseBL;
 using MISA.QuanLyTaiSan.Common.Entities;
 
 namespace MISA.QuanLyTaiSan.BL
 {
-    public interface IFixedAssetBL
+    public interface IFixedAssetBL : IBaseBL<FixedAsset>
     {
         /// <summary>
         /// Lấy danh sách tất cả tài sản
@@ -15,7 +16,7 @@ namespace MISA.QuanLyTaiSan.BL
         /// <returns>Danh sách tất cả tài sản</returns>
         /// Created by: Tuan
         /// Date: 10/11/2022
-        public IEnumerable<dynamic> GetAllFixedAssets();
+        //public IEnumerable<dynamic> GetAllFixedAssets();
 
         /// <summary>
         /// Lấy thông tin 1 tài sản theo ID
