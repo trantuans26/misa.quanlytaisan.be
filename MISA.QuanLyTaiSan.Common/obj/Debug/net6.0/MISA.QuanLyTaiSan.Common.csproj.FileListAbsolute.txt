@@ -14,7 +14,6 @@ D:\Fresher Web Course MISA\misa.quanlytaisan.be\MISA.QuanLyTaiSan.Common\bin\Deb
 D:\Fresher Web Course MISA\misa.quanlytaisan.be\MISA.QuanLyTaiSan.Common\bin\Debug\net6.0\MISA.QuanLyTaiSan.Common.dll
 D:\Fresher Web Course MISA\misa.quanlytaisan.be\MISA.QuanLyTaiSan.Common\bin\Debug\net6.0\MISA.QuanLyTaiSan.Common.pdb
 D:\Fresher Web Course MISA\misa.quanlytaisan.be\MISA.QuanLyTaiSan.Common\obj\Debug\net6.0\MISA.QuanLyTaiSan.Common.csproj.AssemblyReference.cache
-D:\Fresher Web Course MISA\misa.quanlytaisan.be\MISA.QuanLyTaiSan.Common\obj\Debug\net6.0\MISA.QuanLyTaiSan.Common.Resource.resources
 D:\Fresher Web Course MISA\misa.quanlytaisan.be\MISA.QuanLyTaiSan.Common\obj\Debug\net6.0\MISA.QuanLyTaiSan.Common.csproj.GenerateResource.cache
 D:\Fresher Web Course MISA\misa.quanlytaisan.be\MISA.QuanLyTaiSan.Common\obj\Debug\net6.0\MISA.QuanLyTaiSan.Common.GeneratedMSBuildEditorConfig.editorconfig
 D:\Fresher Web Course MISA\misa.quanlytaisan.be\MISA.QuanLyTaiSan.Common\obj\Debug\net6.0\MISA.QuanLyTaiSan.Common.AssemblyInfoInputs.cache
@@ -24,3 +23,4 @@ D:\Fresher Web Course MISA\misa.quanlytaisan.be\MISA.QuanLyTaiSan.Common\obj\Deb
 D:\Fresher Web Course MISA\misa.quanlytaisan.be\MISA.QuanLyTaiSan.Common\obj\Debug\net6.0\refint\MISA.QuanLyTaiSan.Common.dll
 D:\Fresher Web Course MISA\misa.quanlytaisan.be\MISA.QuanLyTaiSan.Common\obj\Debug\net6.0\MISA.QuanLyTaiSan.Common.pdb
 D:\Fresher Web Course MISA\misa.quanlytaisan.be\MISA.QuanLyTaiSan.Common\obj\Debug\net6.0\ref\MISA.QuanLyTaiSan.Common.dll
+D:\Fresher Web Course MISA\misa.quanlytaisan.be\MISA.QuanLyTaiSan.Common\obj\Debug\net6.0\MISA.QuanLyTaiSan.Common.Resources.Resource.resources

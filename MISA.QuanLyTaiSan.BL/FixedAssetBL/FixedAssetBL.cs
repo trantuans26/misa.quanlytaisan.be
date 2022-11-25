@@ -24,7 +24,7 @@ namespace MISA.QuanLyTaiSan.BL
 
         #endregion
 
-
+        #region API Get
         /// <summary>
         /// Lấy danh sách tất cả tài sản
         /// </summary>
@@ -57,9 +57,23 @@ namespace MISA.QuanLyTaiSan.BL
         /// <param name="pageSize"></param>
         /// <param name="pageIndex"></param>
         /// <returns></returns>
-        public IEnumerable<dynamic> GetFixedAssetsFilter(string? keyword, Guid? fixedAssetCategoryId, Guid? departmentId, int pageSize = 20, int pageIndex = 1)
+        public IEnumerable<dynamic> GetFixedAssetsFilter(string? keyword, Guid? fixedAssetCategoryId, Guid? departmentId, int? pageSize, int? pageIndex)
         {
             return _fixedAssetDL.GetFixedAssetsFilter(keyword, fixedAssetCategoryId, departmentId, pageSize, pageIndex);
         }
+        #endregion
+
+        #region API Post
+        /// <summary>
+        /// API thêm mới một tài sản
+        /// </summary>
+        /// <param name="fixedAsset">Đối tượng tài sản cần thêm mới</param>
+        /// <returns>ID của tài sản vừa thêm mới</returns>
+        /// Created by: Tuan (7/11/2022)
+        public int InsertFixedAsset(FixedAsset fixedAsset)
+        {
+            return _fixedAssetDL.InsertFixedAsset(fixedAsset);
+        }
+        #endregion 
     }
 }

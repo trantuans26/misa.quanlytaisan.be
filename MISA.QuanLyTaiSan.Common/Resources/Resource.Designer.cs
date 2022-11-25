@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace MISA.QuanLyTaiSan.Common.Resource {
+namespace MISA.QuanLyTaiSan.Common.Resources {
     using System;
     
     
@@ -29,7 +29,7 @@ namespace MISA.QuanLyTaiSan.Common.Resource {
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        public Resource() {
+        internal Resource() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace MISA.QuanLyTaiSan.Common.Resource {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("MISA.QuanLyTaiSan.Common.Resource", typeof(Resource).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("MISA.QuanLyTaiSan.Common.Resources.Resource", typeof(Resource).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -232,7 +232,7 @@ namespace MISA.QuanLyTaiSan.Common.Resource {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Proc_{0}_Insert.
+        ///   Looks up a localized string similar to Proc_FixedAsset_Insert.
         /// </summary>
         public static string Proc_Insert {
             get {

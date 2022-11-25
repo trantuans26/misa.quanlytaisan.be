@@ -2,7 +2,7 @@
 using MISA.QuanLyTaiSan.BL;
 using MISA.QuanLyTaiSan.Common.Entities;
 using MISA.QuanLyTaiSan.Common.Enums;
-using MISA.QuanLyTaiSan.Common.Resource;
+using MISA.QuanLyTaiSan.Common.Resources;
 
 namespace MISA.QuanLyTaiSan.API.Controllers
 {

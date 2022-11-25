@@ -1,22 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using Dapper;
 using MISA.QuanLyTaiSan.Common.Entities;
+using MySqlConnector;
 
 namespace MISA.QuanLyTaiSan.DL
 {
     public interface IFixedAssetDL : IBaseDL<FixedAsset>
     {
-        /// <summary>
-        /// Lấy danh sách tất cả tài sản
-        /// </summary>
-        /// <returns>Danh sách tất cả tài sản</returns>
-        /// Created by: Tuan
-        /// Date: 10/11/2022
-        //public IEnumerable<dynamic> GetAllFixedAssets();
-
+        #region API Get
         /// <summary>
         /// Lấy thông tin 1 tài sản theo ID
         /// </summary>
@@ -35,6 +31,23 @@ namespace MISA.QuanLyTaiSan.DL
         /// <param name="pageSize"></param>
         /// <param name="pageIndex"></param>
         /// <returns></returns>
-        public IEnumerable<dynamic> GetFixedAssetsFilter(string? keyword, Guid? fixedAssetCategoryID, Guid? departmentID, int pageSize = 20, int pageIndex = 1);
+        public IEnumerable<dynamic> GetFixedAssetsFilter(string? keyword, Guid? fixedAssetCategoryID, Guid? departmentID, int? pageSize, int? pageIndex);
+        #endregion
+
+        #region API Post
+        /// <summary>
+        /// API thêm mới một tài sản
+        /// </summary>
+        /// <param name="fixedAsset">Đối tượng tài sản cần thêm mới</param>
+        /// <returns>ID của tài sản vừa thêm mới</returns>
+        /// Created by: Tuan (7/11/2022)
+        public int InsertFixedAsset(FixedAsset fixedAsset);
+        #endregion
+
+        #region API Put
+        #endregion
+
+        #region API Delete
+        #endregion
     }
 }

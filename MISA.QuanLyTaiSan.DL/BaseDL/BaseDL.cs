@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Dapper;
 using MySqlConnector;
-using MISA.QuanLyTaiSan.Common.Resource;
+using MISA.QuanLyTaiSan.Common.Resources;
 
 namespace MISA.QuanLyTaiSan.DL
 {

@@ -194,7 +194,7 @@
     <comment>Template string cho procedure lấy bản ghi theo điều kiện</comment>
   </data>
   <data name="Proc_Insert" xml:space="preserve">
-    <value>Proc_{0}_Insert</value>
+    <value>Proc_FixedAsset_Insert</value>
     <comment>Template string cho procedure thêm 1 bản ghi</comment>
   </data>
   <data name="Proc_SelectByIDs" xml:space="preserve">

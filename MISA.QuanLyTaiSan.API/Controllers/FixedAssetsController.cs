@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using MISA.QuanLyTaiSan.BL;
 using MISA.QuanLyTaiSan.Common.Entities;
+using MISA.QuanLyTaiSan.Common.Enums;
+using MISA.QuanLyTaiSan.Common.Resources;
 using MySqlConnector;
 
 namespace MISA.QuanLyTaiSan.API.Controllers
@@ -29,38 +31,6 @@ namespace MISA.QuanLyTaiSan.API.Controllers
         #region Method
 
         #region API GET
-        /// <summary>
-        /// API lấy danh sách tất cả tài sản
-        /// </summary>
-        /// <returns>Danh sách tất cả tài sản</returns>
-        /// Created by: TTTuan (7/11/2022)
-        //[HttpGet] // attribute get data
-        //public IActionResult GetAllFixedAssets()
-        //{
-        //    try
-        //    {
-        //        var fixedAssets = _fixedAssetBL.GetAllFixedAssets();
-
-        //        // Xử lý kết quả trả về
-        //        if (fixedAssets != null)
-        //        {
-        //            return StatusCode(StatusCodes.Status200OK, fixedAssets);
-        //        }
-        //        return StatusCode(StatusCodes.Status200OK, new List<FixedAsset>());
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        Console.WriteLine(ex.Message);
-        //        return StatusCode(StatusCodes.Status500InternalServerError, new
-        //        {
-        //            ErrorCode = 1,
-        //            DevMsg = "Catched an exception",
-        //            UseMsg = "Có lỗi xảy ra! Vui lòng liên hệ với MISA",
-        //            MoreInfor = "",
-        //            TraceId = HttpContext.TraceIdentifier,
-        //        });
-        //    }
-        //}
 
         /// <summary>
         /// API lấy một tài sản theo ID
@@ -111,8 +81,8 @@ namespace MISA.QuanLyTaiSan.API.Controllers
             [FromQuery] string? keyword,
             [FromQuery] Guid? fixedAssetCategoryID,
             [FromQuery] Guid? departmentID,
-            [FromQuery] int pageSize = 20,
-            [FromQuery] int pageIndex = 1
+            [FromQuery] int? pageSize,
+            [FromQuery] int? pageIndex
             )
         {
             try
@@ -129,14 +99,12 @@ namespace MISA.QuanLyTaiSan.API.Controllers
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
-                return StatusCode(StatusCodes.Status500InternalServerError, new
-                {
-                    ErrorCode = 1,
-                    DevMsg = "Catched an exception",
-                    UseMsg = "Có lỗi xảy ra! Vui lòng liên hệ với MISA",
-                    MoreInfor = "https://openapi.misa.com.vn/errorcode/1",
-                    TraceId = HttpContext.TraceIdentifier,
-                });
+                return StatusCode(StatusCodes.Status500InternalServerError, new ErrorResult(
+                      FixedAssetErrorCode.Exception,
+                      Resource.DevMsg_Exception,
+                      Resource.UserMsg_Exception,
+                      Resource.MoreInfo_Exception,
+                      HttpContext.TraceIdentifier));
             }
         }
         #endregion
@@ -153,69 +121,29 @@ namespace MISA.QuanLyTaiSan.API.Controllers
         {
             try
             {
-                // Khởi tạo kết nối tới DB MySQL
-                var connectionString = "Server=localhost;Port=3306;Database=qlts_fresher_core;Uid=root;Pwd=12345678;";
-                var mySqlConnection = new MySqlConnection(connectionString);
-
-                // Chuẩn bị câu lệnh SQL
-                string storeProcedureName = "Proc_InsertFixedAsset";
-
-                // Chuẩn bị tham số đầu vào
-                var parameters = new DynamicParameters();
-
-                var newFixedAssetID = Guid.NewGuid();
-                parameters.Add("$FixedAssetId", newFixedAssetID);
-                parameters.Add("$FixedAssetCode", fixedAsset.fixed_asset_code);
-                parameters.Add("$FixedAssetName", fixedAsset.fixed_asset_name);
-                parameters.Add("$OrganizationId", fixedAsset.organization_id);
-                parameters.Add("$OrganizationCode", fixedAsset.organization_code);
-                parameters.Add("$OrganizationName", fixedAsset.organization_name);
-                parameters.Add("$DepartmentId", fixedAsset.department_id);
-                parameters.Add("$DepartmentCode", fixedAsset.department_code);
-                parameters.Add("$DepartmentName", fixedAsset.department_name);
-                parameters.Add("$FixedAssetCategoryId", fixedAsset.fixed_asset_category_id);
-                parameters.Add("$FixedAssetCategoryCode", fixedAsset.fixed_asset_category_code);
-                parameters.Add("$FixedAssetCategoryName", fixedAsset.fixed_asset_category_name);
-                parameters.Add("$PurchaseDate", fixedAsset.purchase_date);
-                parameters.Add("$Cost", fixedAsset.cost);
-                parameters.Add("$Quantity", fixedAsset.quantity);
-                parameters.Add("$DepreciationRate", fixedAsset.depreciation_rate);
-                parameters.Add("$TrackedYear", fixedAsset.tracked_year);
-                parameters.Add("$LifeTime", fixedAsset.life_time);
-                parameters.Add("$ProductionYear", fixedAsset.production_year);
-                parameters.Add("$Active", fixedAsset.active);
-                parameters.Add("$CreatedBy", "Trần Thái Tuấn");
-                parameters.Add("$CreatedDate", DateTime.Now);
-                parameters.Add("$ModifiedBy", "Trần Thái Tuấn");
-                parameters.Add("$ModifiedDate", DateTime.Now);
-
-                // Thực hiện gọi vào DB
-                int numberOfRowsAffected = mySqlConnection.Execute(storeProcedureName, parameters, commandType: System.Data.CommandType.StoredProcedure);
+                int numberOfRowsAffected = _fixedAssetBL.InsertFixedAsset(fixedAsset);
+                 
                 // Xử lý kết quả trả về
                 if (numberOfRowsAffected > 0) 
                 {
-                    return StatusCode(StatusCodes.Status201Created, newFixedAssetID);
+                    return StatusCode(StatusCodes.Status201Created);
                 }
-                return StatusCode(StatusCodes.Status400BadRequest, new
-                {
-                    ErrorCode = 2,
-                    DevMsg = "Database insert failed",
-                    UseMsg = "Thêm mới tài sản thất bại",
-                    MoreInfor = "https://openapi.misa.com.vn/errorcode/1",
-                    TraceId = HttpContext.TraceIdentifier,
-                });
+                return StatusCode(StatusCodes.Status400BadRequest, new ErrorResult(
+                    FixedAssetErrorCode.DuplicateCode,
+                    Resource.DevMsg_ValidateFailed,
+                    Resource.UserMsg_ValidateFailed,
+                    Resource.MoreInfo_ValidateFailed,
+                    HttpContext.TraceIdentifier));
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
-                return StatusCode(StatusCodes.Status500InternalServerError, new
-                {
-                    ErrorCode = 1,
-                    DevMsg = "Catched an exception",
-                    UseMsg = "Có lỗi xảy ra! Vui lòng liên hệ với MISA",
-                    MoreInfor = "https://openapi.misa.com.vn/errorcode/1",
-                    TraceId = HttpContext.TraceIdentifier,
-                });
+                return StatusCode(StatusCodes.Status500InternalServerError, new ErrorResult(
+                    FixedAssetErrorCode.Exception,
+                    Resource.DevMsg_Exception,
+                    Resource.UserMsg_Exception,
+                    Resource.MoreInfo_Exception,
+                    HttpContext.TraceIdentifier));
             }
         }
         #endregion
