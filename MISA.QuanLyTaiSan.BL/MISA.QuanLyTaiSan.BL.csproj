@@ -11,8 +11,4 @@
     <ProjectReference Include="..\MISA.QuanLyTaiSan.DL\MISA.QuanLyTaiSan.DL.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="FixedAssetCategoryBL\" />
-  </ItemGroup>
-
 </Project>

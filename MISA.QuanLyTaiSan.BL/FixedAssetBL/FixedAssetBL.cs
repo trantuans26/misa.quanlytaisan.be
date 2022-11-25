@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using MISA.QuanLyTaiSan.BL.BaseBL;
 using MISA.QuanLyTaiSan.Common.Entities;
 using MISA.QuanLyTaiSan.DL;
 

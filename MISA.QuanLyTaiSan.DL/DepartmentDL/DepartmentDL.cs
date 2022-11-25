@@ -1,12 +1,13 @@
-﻿using System;
+﻿using MISA.QuanLyTaiSan.Common.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MISA.QuanLyTaiSan.DL.DepartmentDL
+namespace MISA.QuanLyTaiSan.DL
 {
-    internal class DepartmentDL
+    public class DepartmentDL : BaseDL<Department>, IDepartmentDL
     {
     }
 }

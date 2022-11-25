@@ -1,7 +1,5 @@
 ﻿using MISA.QuanLyTaiSan.BL;
-using MISA.QuanLyTaiSan.BL.BaseBL;
 using MISA.QuanLyTaiSan.DL;
-using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,6 +12,10 @@ builder.Services.AddScoped(typeof(IBaseDL<>), typeof(BaseDL<>));
 builder.Services.AddScoped(typeof(IBaseBL<>), typeof(BaseBL<>));
 builder.Services.AddScoped<IFixedAssetBL, FixedAssetBL>();
 builder.Services.AddScoped<IFixedAssetDL, FixedAssetDL>();
+builder.Services.AddScoped<IDepartmentDL, DepartmentDL>();
+builder.Services.AddScoped<IDepartmentBL, DepartmentBL>();
+builder.Services.AddScoped<IFixedAssetCategoryBL, FixedAssetCategoryBL>();
+builder.Services.AddScoped<IFixedAssetCategoryDL, FixedAssetCategoryDL>();
 
 // Lấy dữ liệu connection string từ file appsettings.Development.json
 DataContext.ConnectionString = builder.Configuration.GetConnectionString("MySQL");

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MISA.QuanLyTaiSan.BL
 {
-    public interface IDepartmentBL : IBaseBL<Department>
+    public interface IFixedAssetCategoryBL : IBaseBL<FixedAssetCategory>
     {
     }
 }

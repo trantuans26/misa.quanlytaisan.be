@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MISA.QuanLyTaiSan.BL
+namespace MISA.QuanLyTaiSan.DL
 {
-    public interface IDepartmentBL : IBaseBL<Department>
+    public class FixedAssetCategoryDL : BaseDL<FixedAssetCategory>, IFixedAssetCategoryDL
     {
     }
 }

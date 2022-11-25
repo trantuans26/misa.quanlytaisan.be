@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MISA.QuanLyTaiSan.BL;
-using MISA.QuanLyTaiSan.BL.BaseBL;
 using MISA.QuanLyTaiSan.Common.Entities;
 using MISA.QuanLyTaiSan.Common.Enums;
 using MISA.QuanLyTaiSan.Common.Resource;

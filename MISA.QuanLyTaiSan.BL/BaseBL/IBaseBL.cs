@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MISA.QuanLyTaiSan.BL.BaseBL
+namespace MISA.QuanLyTaiSan.BL
 {
     public interface IBaseBL<T>
     {
