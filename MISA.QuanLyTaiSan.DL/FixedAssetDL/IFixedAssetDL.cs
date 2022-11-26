@@ -31,7 +31,7 @@ namespace MISA.QuanLyTaiSan.DL
         /// <param name="pageSize"></param>
         /// <param name="pageIndex"></param>
         /// <returns></returns>
-        public IEnumerable<dynamic> GetFixedAssetsFilter(string? keyword, Guid? fixedAssetCategoryID, Guid? departmentID, int? pageSize, int? pageIndex);
+        public IEnumerable<dynamic> GetFixedAssetsByFilter(string? keyword, Guid? fixedAssetCategoryID, Guid? departmentID, int? pageSize, int? pageIndex);
         #endregion
 
         #region API Post

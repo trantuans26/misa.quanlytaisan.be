@@ -57,9 +57,9 @@ namespace MISA.QuanLyTaiSan.BL
         /// <param name="pageSize"></param>
         /// <param name="pageIndex"></param>
         /// <returns></returns>
-        public IEnumerable<dynamic> GetFixedAssetsFilter(string? keyword, Guid? fixedAssetCategoryId, Guid? departmentId, int? pageSize, int? pageIndex)
+        public IEnumerable<dynamic> GetFixedAssetsByFilter(string? keyword, Guid? fixedAssetCategoryId, Guid? departmentId, int? pageSize, int? pageIndex)
         {
-            return _fixedAssetDL.GetFixedAssetsFilter(keyword, fixedAssetCategoryId, departmentId, pageSize, pageIndex);
+            return _fixedAssetDL.GetFixedAssetsByFilter(keyword, fixedAssetCategoryId, departmentId, pageSize, pageIndex);
         }
         #endregion
 

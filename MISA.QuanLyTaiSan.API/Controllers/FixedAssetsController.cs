@@ -77,7 +77,7 @@ namespace MISA.QuanLyTaiSan.API.Controllers
         /// <returns>Danh sách nhân viên và tổng số bản ghi</returns>
         /// Created by: TTTuan (7/11/2022)
         [HttpGet("filter")]
-        public IActionResult GetFixedAssetsFilter(
+        public IActionResult GetFixedAssetsByFilter(
             [FromQuery] string? keyword,
             [FromQuery] Guid? fixedAssetCategoryID,
             [FromQuery] Guid? departmentID,
@@ -87,7 +87,7 @@ namespace MISA.QuanLyTaiSan.API.Controllers
         {
             try
             {
-                var fixedAssets = _fixedAssetBL.GetFixedAssetsFilter(keyword, fixedAssetCategoryID, departmentID, pageSize, pageIndex);
+                var fixedAssets = _fixedAssetBL.GetFixedAssetsByFilter(keyword, fixedAssetCategoryID, departmentID, pageSize, pageIndex);
 
                 // Xử lý kết quả trả về
                 if (fixedAssets != null)
@@ -157,7 +157,7 @@ namespace MISA.QuanLyTaiSan.API.Controllers
         /// <returns>ID của tài sản vừa sửa</returns>
         /// Created by: TTTuan (7/11/2022)
         [HttpPut("{fixedAssetID}")]
-        public IActionResult UpdateFixedAsset([FromRoute] Guid fixedAssetID, [FromBody] FixedAsset fixedAsset)
+        public IActionResult UpdateFixedAssetByID([FromRoute] Guid fixedAssetID, [FromBody] FixedAsset fixedAsset)
         {
             try
             {
@@ -166,21 +166,21 @@ namespace MISA.QuanLyTaiSan.API.Controllers
                 var mySqlConnection = new MySqlConnection(connectionString);
 
                 // Chuẩn bị câu lệnh SQL
-                string storeProcedureName = "Proc_UpdateFixedAssetById";
+                string storeProcedureName = "Proc_FixedAsset_UpdateByID";
 
                 // Chuẩn bị tham số đầu vào
                 var parameters = new DynamicParameters();
 
-                parameters.Add("$FixedAssetId", fixedAssetID);
+                parameters.Add("$FixedAssetID", fixedAssetID);
                 parameters.Add("$FixedAssetCode", fixedAsset.fixed_asset_code);
                 parameters.Add("$FixedAssetName", fixedAsset.fixed_asset_name);
-                parameters.Add("$OrganizationId", fixedAsset.organization_id);
+                parameters.Add("$OrganizationID", fixedAsset.organization_id);
                 parameters.Add("$OrganizationCode", fixedAsset.organization_code);
                 parameters.Add("$OrganizationName", fixedAsset.organization_name);
-                parameters.Add("$DepartmentId", fixedAsset.department_id);
+                parameters.Add("$DepartmentID", fixedAsset.department_id);
                 parameters.Add("$DepartmentCode", fixedAsset.department_code);
                 parameters.Add("$DepartmentName", fixedAsset.department_name);
-                parameters.Add("$FixedAssetCategoryId", fixedAsset.fixed_asset_category_id);
+                parameters.Add("$FixedAssetCategoryID", fixedAsset.fixed_asset_category_id);
                 parameters.Add("$FixedAssetCategoryCode", fixedAsset.fixed_asset_category_code);
                 parameters.Add("$FixedAssetCategoryName", fixedAsset.fixed_asset_category_name);
                 parameters.Add("$PurchaseDate", fixedAsset.purchase_date);

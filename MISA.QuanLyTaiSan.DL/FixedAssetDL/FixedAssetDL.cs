@@ -27,11 +27,11 @@ namespace MISA.QuanLyTaiSan.DL
             var mySqlConnection = new MySqlConnection(connectionString);
 
             // Chuẩn bị câu lệnh SQL
-            string storeProcedureName = "Proc_GetFixedAssetById";
+            string storeProcedureName = "Proc_FixedAsset_GetByID";
 
             // Chuẩn bị tham số đầu vào
             var parameters = new DynamicParameters();
-            parameters.Add("$FixedAssetId", fixedAssetID);
+            parameters.Add("$FixedAssetID", fixedAssetID);
 
             // Thực hiện gọi vào DB
             var fixedAsset = mySqlConnection.QueryFirstOrDefault<FixedAsset>(storeProcedureName, parameters, commandType: System.Data.CommandType.StoredProcedure);
@@ -49,7 +49,7 @@ namespace MISA.QuanLyTaiSan.DL
         /// <param name="pageSize"></param>
         /// <param name="pageIndex"></param>
         /// <returns></returns>
-        public IEnumerable<dynamic> GetFixedAssetsFilter(string? keyword, Guid? fixedAssetCategoryID, Guid? departmentID, int? pageSize, int? pageIndex)
+        public IEnumerable<dynamic> GetFixedAssetsByFilter(string? keyword, Guid? fixedAssetCategoryID, Guid? departmentID, int? pageSize, int? pageIndex)
         {
             // Khởi tạo kết nối tới DB MySQL
             var connectionString = DataContext.ConnectionString;
