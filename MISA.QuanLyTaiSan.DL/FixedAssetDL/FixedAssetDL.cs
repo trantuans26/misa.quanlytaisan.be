@@ -118,9 +118,9 @@ namespace MISA.QuanLyTaiSan.DL
                 parameters.Add("$LifeTime", fixedAsset.life_time);
                 parameters.Add("$ProductionYear", fixedAsset.production_year);
                 parameters.Add("$Active", fixedAsset.active);
-                parameters.Add("$CreatedBy", "Trần Thái Tuấn");
+                parameters.Add("$CreatedBy", Resource.DefaultUser);
                 parameters.Add("$CreatedDate", DateTime.Now);
-                parameters.Add("$ModifiedBy", "Trần Thái Tuấn");
+                parameters.Add("$ModifiedBy", Resource.DefaultUser);
                 parameters.Add("$ModifiedDate", DateTime.Now);
 
                 // Thực hiện gọi vào DB
