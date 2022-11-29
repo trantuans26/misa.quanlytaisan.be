@@ -18,11 +18,6 @@
         public string fixed_asset_category_name { get; set; }
 
         /// <summary>
-        /// ID đơn vị
-        /// </summary>
-        public Guid organization_id { get; set; }
-
-        /// <summary>
         /// Tỷ lệ hao mòn (%)
         /// </summary>
         public float depreciation_rate { get; set; }

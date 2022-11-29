@@ -5,6 +5,6 @@
         /// <summary>
         /// Danh sách id của tài sản
         /// </summary>
-        public List<Guid> FixedAssetIDs { get; set; }
+        public string FixedAssetIDs { get; set; }
     }
 }

@@ -36,11 +36,6 @@
         public Guid parent_id { get; set; }
 
         /// <summary>
-        /// ID đơn vị
-        /// </summary>
-        public Guid organization_id { get; set; }
-
-        /// <summary>
         /// Người tạo
         /// </summary>
         public string created_by { get; set; }

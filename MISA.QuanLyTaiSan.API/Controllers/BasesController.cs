@@ -50,7 +50,7 @@ namespace MISA.QuanLyTaiSan.API.Controllers
             {
                 Console.WriteLine(ex.Message);
                 return StatusCode(StatusCodes.Status500InternalServerError, new ErrorResult(
-                    FixedAssetErrorCode.Exception,
+                    ErrorCode.Exception,
                     Resource.DevMsg_Exception,
                     Resource.UserMsg_Exception,
                     Resource.MoreInfo_Exception,

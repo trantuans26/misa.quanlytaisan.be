@@ -14,7 +14,7 @@ namespace MISA.QuanLyTaiSan.Common.Entities
         /// <summary>
         /// Mã lỗi
         /// </summary>
-        public FixedAssetErrorCode ErrorCode { get; set; }
+        public ErrorCode ErrorCode { get; set; }
 
         /// <summary>
         /// Lời nhắn cho dev
@@ -42,7 +42,7 @@ namespace MISA.QuanLyTaiSan.Common.Entities
 
         public ErrorResult() { }
 
-        public ErrorResult(FixedAssetErrorCode errorCode, string devMsg, string userMsg, Object moreInfo, string? traceId = null)
+        public ErrorResult(ErrorCode errorCode, string devMsg, string userMsg, Object moreInfo, string? traceId = null)
         {
             ErrorCode = errorCode;
             DevMsg = devMsg;

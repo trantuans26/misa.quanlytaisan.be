@@ -7,6 +7,9 @@ using MySqlConnector;
 using Dapper;
 using MISA.QuanLyTaiSan.Common.Entities;
 using MISA.QuanLyTaiSan.Common.Resources;
+using MISA.QuanLyTaiSan.Common.Attributes;
+using System.Data;
+using System.Transactions;
 
 namespace MISA.QuanLyTaiSan.DL
 {
@@ -22,22 +25,21 @@ namespace MISA.QuanLyTaiSan.DL
         /// Date: 10/11/2022
         public FixedAsset GetFixedAssetByID(Guid fixedAssetID)
         {
-            // Khởi tạo kết nối tới DB MySQL
-            var connectionString = DataContext.ConnectionString;
-            var mySqlConnection = new MySqlConnection(connectionString);
+            using(var mySqlConnection = new MySqlConnection(DataContext.ConnectionString))
+            {
+                // Chuẩn bị câu lệnh SQL
+                string storeProcedureName = "Proc_FixedAsset_GetByID";
 
-            // Chuẩn bị câu lệnh SQL
-            string storeProcedureName = "Proc_FixedAsset_GetByID";
+                // Chuẩn bị tham số đầu vào
+                var parameters = new DynamicParameters();
+                parameters.Add("$FixedAssetID", fixedAssetID);
 
-            // Chuẩn bị tham số đầu vào
-            var parameters = new DynamicParameters();
-            parameters.Add("$FixedAssetID", fixedAssetID);
+                // Thực hiện gọi vào DB
+                var fixedAsset = mySqlConnection.QueryFirstOrDefault<FixedAsset>(storeProcedureName, parameters, commandType: System.Data.CommandType.StoredProcedure);
 
-            // Thực hiện gọi vào DB
-            var fixedAsset = mySqlConnection.QueryFirstOrDefault<FixedAsset>(storeProcedureName, parameters, commandType: System.Data.CommandType.StoredProcedure);
-
-            // Xử lý kết quả trả về
-            return fixedAsset;
+                // Xử lý kết quả trả về
+                return fixedAsset;
+            }
         }
 
         /// <summary>
@@ -51,30 +53,29 @@ namespace MISA.QuanLyTaiSan.DL
         /// <returns></returns>
         public IEnumerable<dynamic> GetFixedAssetsByFilter(string? keyword, Guid? fixedAssetCategoryID, Guid? departmentID, int? pageSize, int? pageIndex)
         {
-            // Khởi tạo kết nối tới DB MySQL
-            var connectionString = DataContext.ConnectionString;
-            var mySqlConnection = new MySqlConnection(connectionString);
-
-            // Chuẩn bị câu lệnh SQL
-            string storeProcedureName = Resource.Proc_GetFilter;
-
-            // Chuẩn bị tham số đầu vào
-            var parameters = new DynamicParameters();
-            parameters.Add("$Keyword", keyword);
-            parameters.Add("$DepartmentId", departmentID);
-            parameters.Add("$fixedAssetCategoryId", fixedAssetCategoryID);
-            parameters.Add("$PageSize", pageSize);
-            parameters.Add("$PageIndex", pageIndex);
-
-            // Thực hiện gọi vào DB
-            var fixedAssets = mySqlConnection.Query(storeProcedureName, parameters, commandType: System.Data.CommandType.StoredProcedure);
-
-            // Xử lý kết quả trả về
-            if (fixedAssets != null)
+            using (var mySqlConnection = new MySqlConnection(DataContext.ConnectionString))
             {
-                return fixedAssets;
+                // Chuẩn bị câu lệnh SQL
+                string storeProcedureName = Resource.Proc_GetFilter;
+
+                // Chuẩn bị tham số đầu vào
+                var parameters = new DynamicParameters();
+                parameters.Add("$Keyword", keyword);
+                parameters.Add("$DepartmentId", departmentID);
+                parameters.Add("$fixedAssetCategoryId", fixedAssetCategoryID);
+                parameters.Add("$PageSize", pageSize);
+                parameters.Add("$PageIndex", pageIndex);
+
+                // Thực hiện gọi vào DB
+                var fixedAssets = mySqlConnection.Query(storeProcedureName, parameters, commandType: System.Data.CommandType.StoredProcedure);
+
+                // Xử lý kết quả trả về
+                if (fixedAssets != null)
+                {
+                    return fixedAssets;
+                }
+                return new List<FixedAsset>();
             }
-            return new List<FixedAsset>();
         }
         #endregion
 
@@ -87,9 +88,7 @@ namespace MISA.QuanLyTaiSan.DL
         /// Created by: Tuan (7/11/2022)
         public int InsertFixedAsset(FixedAsset fixedAsset)
         {
-            // Khởi tạo kết nối tới DB MySQL
-            var connectionString = DataContext.ConnectionString;
-            using (var mySqlConnection = new MySqlConnection(connectionString))
+            using (var mySqlConnection = new MySqlConnection(DataContext.ConnectionString))
             {
                 // Chuẩn bị câu lệnh SQL
                 string storeProcedureName = Resource.Proc_Insert;
@@ -101,9 +100,6 @@ namespace MISA.QuanLyTaiSan.DL
                 parameters.Add("$FixedAssetId", newFixedAssetID);
                 parameters.Add("$FixedAssetCode", fixedAsset.fixed_asset_code);
                 parameters.Add("$FixedAssetName", fixedAsset.fixed_asset_name);
-                parameters.Add("$OrganizationId", fixedAsset.organization_id);
-                parameters.Add("$OrganizationCode", fixedAsset.organization_code);
-                parameters.Add("$OrganizationName", fixedAsset.organization_name);
                 parameters.Add("$DepartmentId", fixedAsset.department_id);
                 parameters.Add("$DepartmentCode", fixedAsset.department_code);
                 parameters.Add("$DepartmentName", fixedAsset.department_name);
@@ -116,7 +112,7 @@ namespace MISA.QuanLyTaiSan.DL
                 parameters.Add("$DepreciationRate", fixedAsset.depreciation_rate);
                 parameters.Add("$TrackedYear", fixedAsset.tracked_year);
                 parameters.Add("$LifeTime", fixedAsset.life_time);
-                parameters.Add("$ProductionYear", fixedAsset.production_year);
+                parameters.Add("$ProductionDate", fixedAsset.production_date);
                 parameters.Add("$Active", fixedAsset.active);
                 parameters.Add("$CreatedBy", Resource.DefaultUser);
                 parameters.Add("$CreatedDate", DateTime.Now);
@@ -130,12 +126,165 @@ namespace MISA.QuanLyTaiSan.DL
                 return numberOfRowsAffected;
             }
         }
+
+
         #endregion
 
         #region API Put
+        /// <summary>
+        /// API sửa thông tin 1 tài sản theo ID
+        /// </summary>
+        /// <param name="fixedAssetID">ID tài sản muốn sửa</param>
+        /// <param name="fixedAsset">Đối tượng tài sản muốn sửa</param>
+        /// <returns>ID của tài sản vừa sửa</returns>
+        /// Created by: TTTuan (7/11/2022)
+        public int UpdateFixedAssetByID(Guid fixedAssetID, FixedAsset fixedAsset)
+        {
+            using (var mySqlConnection = new MySqlConnection(DataContext.ConnectionString))
+            {
+                // Chuẩn bị câu lệnh SQL
+                string storeProcedureName = Resource.Proc_UpdateByID;
+
+                // Chuẩn bị tham số đầu vào
+                var parameters = new DynamicParameters();
+
+                parameters.Add("$FixedAssetID", fixedAssetID);
+                parameters.Add("$FixedAssetCode", fixedAsset.fixed_asset_code);
+                parameters.Add("$FixedAssetName", fixedAsset.fixed_asset_name);
+                parameters.Add("$DepartmentID", fixedAsset.department_id);
+                parameters.Add("$DepartmentCode", fixedAsset.department_code);
+                parameters.Add("$DepartmentName", fixedAsset.department_name);
+                parameters.Add("$FixedAssetCategoryID", fixedAsset.fixed_asset_category_id);
+                parameters.Add("$FixedAssetCategoryCode", fixedAsset.fixed_asset_category_code);
+                parameters.Add("$FixedAssetCategoryName", fixedAsset.fixed_asset_category_name);
+                parameters.Add("$PurchaseDate", fixedAsset.purchase_date);
+                parameters.Add("$Cost", fixedAsset.cost);
+                parameters.Add("$Quantity", fixedAsset.quantity);
+                parameters.Add("$DepreciationRate", fixedAsset.depreciation_rate);
+                parameters.Add("$TrackedYear", fixedAsset.tracked_year);
+                parameters.Add("$LifeTime", fixedAsset.life_time);
+                parameters.Add("$ProductionDate", fixedAsset.production_date);
+                parameters.Add("$Active", fixedAsset.active);
+                parameters.Add("$ModifiedBy", "Trần Thái Tuấn");
+                parameters.Add("$ModifiedDate", DateTime.Now);
+
+                // Thực hiện gọi vào DB
+                int numberOfRowsAffected = mySqlConnection.Execute(storeProcedureName, parameters, commandType: System.Data.CommandType.StoredProcedure);
+
+                return numberOfRowsAffected;
+            }
+        }
         #endregion
 
         #region API Delete
+        /// <summary>
+        /// API xoá 1 tài sản theo ID
+        /// </summary>
+        /// <param name="fixedAssetID">ID của tài sản muốn xoá</param>
+        /// <returns>ID của tài sản vừa xoá</returns>
+        /// Created by: TTTuan (7/11/2022)
+        public int DeleteFixedAssetByID(Guid fixedAssetID)
+        {
+            var numberOfAffectedRows = 0;
+            //khởi tạo kết nối db
+            string connectionString = DataContext.ConnectionString;
+            using (var mySqlConnection = new MySqlConnection(connectionString))
+            {
+                //nếu như kết nối đang đóng thì tiến hành mở lại
+                if (mySqlConnection.State != ConnectionState.Open)
+                {
+                    mySqlConnection.Open();
+                }
+                using (var transaction = mySqlConnection.BeginTransaction())
+                {
+                    try
+                    {
+                        string storedProcedureName = Resource.Proc_DeleteByID;
+
+                        var parameters = new DynamicParameters();
+                        parameters.Add("$FixedAssetID", fixedAssetID);
+
+                        numberOfAffectedRows = mySqlConnection.Execute(storedProcedureName, parameters, transaction: transaction, commandType: System.Data.CommandType.StoredProcedure);
+
+                        if (numberOfAffectedRows > 0)
+                        {
+                            transaction.Commit();
+                        }
+                        else
+                        {
+                            transaction.Rollback();
+                            numberOfAffectedRows = 0;
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex);
+                        //nếu thực hiện không thành công thì rollback
+                        transaction.Rollback();
+                        numberOfAffectedRows = 0;
+                    }
+                    finally
+                    {
+                        mySqlConnection.Close();
+                    }
+                }
+
+            }
+            return numberOfAffectedRows;
+        }
+
+        /// <summary>
+        /// API xoá nhiều tài sản theo IDs
+        /// </summary>
+        /// <param name="listFixedAssetID">IDs của tài sản muốn xoá</param>
+        /// <returns>ID của tài sản vừa xoá</returns>
+        /// Created by: TTTuan (7/11/2022)
+        public int DeleteFixedAssetByIDs(ListFixedAssetID listFixedAssetID)
+        {
+            var numberOfRowsAffected = 0;
+
+            string connectionString = DataContext.ConnectionString;
+            using (var mySqlConnection = new MySqlConnection(connectionString))
+            {
+                //Nếu kết nối đang đóng thì tiến hành mở lại
+                if (mySqlConnection.State != ConnectionState.Open)
+                {
+                    mySqlConnection.Open();
+                }
+                using (var transaction = mySqlConnection.BeginTransaction())
+                {
+                    try
+                    {
+                        string storedProcedureName = Resource.Proc_DeleteByIDs;
+                        var parameters = new DynamicParameters();
+                        parameters.Add("$FixedAssetIDs", listFixedAssetID.FixedAssetIDs);
+
+                        numberOfRowsAffected = mySqlConnection.Execute(storedProcedureName, parameters, transaction: transaction, commandType: System.Data.CommandType.StoredProcedure);
+
+                        if (numberOfRowsAffected > 0)
+                        {
+                            transaction.Commit();
+                        }
+                        else
+                        {
+                            transaction.Rollback();
+                            numberOfRowsAffected = 0;
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex);
+                        transaction.Rollback();
+                        numberOfRowsAffected = 0;
+                    }
+                    finally
+                    {
+                        mySqlConnection.Close();
+                    }
+                }
+            }
+            return numberOfRowsAffected;
+        }
         #endregion
     }
 }
