@@ -5,8 +5,6 @@ using MISA.QuanLyTaiSan.BL;
 using MISA.QuanLyTaiSan.Common.Entities;
 using MISA.QuanLyTaiSan.Common.Enums;
 using MISA.QuanLyTaiSan.Common.Resources;
-using MISA.QuanLyTaiSan.DL;
-using MySqlConnector;
 
 namespace MISA.QuanLyTaiSan.API.Controllers
 {
@@ -56,14 +54,12 @@ namespace MISA.QuanLyTaiSan.API.Controllers
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
-                return StatusCode(StatusCodes.Status500InternalServerError, new
-                {
-                    ErrorCode = 1,
-                    DevMsg = "Catched an exception",
-                    UseMsg = "Có lỗi xảy ra! Vui lòng liên hệ với MISA",
-                    MoreInfor = "https://openapi.misa.com.vn/errorcode/1",
-                    TraceId = HttpContext.TraceIdentifier,
-                });
+                return StatusCode(StatusCodes.Status500InternalServerError, new ErrorResult(
+                      ErrorCode.Exception,
+                      Resource.DevMsg_Exception,
+                      Resource.UserMsg_Exception,
+                      Resource.MoreInfo_Exception,
+                      HttpContext.TraceIdentifier));
             }
         }
 

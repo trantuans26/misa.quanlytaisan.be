@@ -115,29 +115,11 @@ namespace MISA.QuanLyTaiSan.Common.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Error asset duplicate exception .
-        /// </summary>
-        public static string DevMsg_ValidateDuplicateCode {
-            get {
-                return ResourceManager.GetString("DevMsg_ValidateDuplicateCode", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to One or more validation errors occurred.
         /// </summary>
         public static string DevMsg_ValidateFailed {
             get {
                 return ResourceManager.GetString("DevMsg_ValidateFailed", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to DuplicateKeyEntry.
-        /// </summary>
-        public static string DuplicateKeyEntry {
-            get {
-                return ResourceManager.GetString("DuplicateKeyEntry", resourceCulture);
             }
         }
         
@@ -223,15 +205,6 @@ namespace MISA.QuanLyTaiSan.Common.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Proc_FixedAsset_DuplicateCode.
-        /// </summary>
-        public static string Proc_DuplicateCode {
-            get {
-                return ResourceManager.GetString("Proc_DuplicateCode", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Proc_{0}_GetAll.
         /// </summary>
         public static string Proc_GetAll {
@@ -273,24 +246,6 @@ namespace MISA.QuanLyTaiSan.Common.Resources {
         public static string Proc_UpdateByID {
             get {
                 return ResourceManager.GetString("Proc_UpdateByID", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to .
-        /// </summary>
-        public static string String1 {
-            get {
-                return ResourceManager.GetString("String1", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Mã tài sản đã tồn tại.
-        /// </summary>
-        public static string UseMsg_ValidateDuplicateCode {
-            get {
-                return ResourceManager.GetString("UseMsg_ValidateDuplicateCode", resourceCulture);
             }
         }
         

@@ -141,17 +141,9 @@
     <value>Update to database return 0</value>
     <comment>Message cho dev đọc khi Update bản ghi vào database thất bại</comment>
   </data>
-  <data name="DevMsg_ValidateDuplicateCode" xml:space="preserve">
-    <value>Error asset duplicate exception </value>
-    <comment>Thông báo cho dev khi gọi api bị mã tài sản tồn tại</comment>
-  </data>
   <data name="DevMsg_ValidateFailed" xml:space="preserve">
     <value>One or more validation errors occurred</value>
     <comment>Message cho dev đọc khi Validate dữ liệu đầu vào thất bại</comment>
-  </data>
-  <data name="DuplicateKeyEntry" xml:space="preserve">
-    <value>DuplicateKeyEntry</value>
-    <comment>Lỗi mã tài sản bị trùng khi vào DB</comment>
   </data>
   <data name="MoreInfo_DeleteFailed" xml:space="preserve">
     <value>https://openapi.misa.com.vn/errorcode/7</value>
@@ -189,10 +181,6 @@
     <value>Proc_FixedAsset_DeleteByIDs</value>
     <comment>Template string cho procedure xóa nhiều bản ghi theo danh sách id</comment>
   </data>
-  <data name="Proc_DuplicateCode" xml:space="preserve">
-    <value>Proc_FixedAsset_DuplicateCode</value>
-    <comment>Template string cho procedure validate trùng mã</comment>
-  </data>
   <data name="Proc_GetAll" xml:space="preserve">
     <value>Proc_{0}_GetAll</value>
     <comment>Template string cho procedure lấy tất cả bản ghi của 1 bảng</comment>
@@ -212,13 +200,6 @@
   <data name="Proc_UpdateByID" xml:space="preserve">
     <value>Proc_FixedAsset_UpdateByID</value>
     <comment>Template string cho procedure cập nhật 1 bản ghi theo ID</comment>
-  </data>
-  <data name="String1" xml:space="preserve">
-    <value />
-  </data>
-  <data name="UseMsg_ValidateDuplicateCode" xml:space="preserve">
-    <value>Mã tài sản đã tồn tại</value>
-    <comment>Thông báo cho người dùng khi mã tài sản tồn tại</comment>
   </data>
   <data name="UserMsg_DeleteFailed" xml:space="preserve">
     <value>Xóa bản ghi thất bại</value>
